@@ -16,8 +16,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { authClient } from "@/lib/auth-client";
-import { Toaster } from "@/components/ui/sonner";
-import { forgotPasswordSchema } from "@/lib/schema";
+ import { forgotPasswordSchema } from "@/lib/schema";
 import { toast } from "sonner";
 
 export default function ForgotPassword() {

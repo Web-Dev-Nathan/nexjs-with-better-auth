@@ -19,8 +19,7 @@ import { resetPasswordSchema } from "@/lib/schema";
 import LoadingButton from "@/components/loading-button";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import { Toaster } from "@/components/ui/sonner";
-import { toast } from "sonner";
+ import { toast } from "sonner";
 
 
 function ResetPasswordContent() {
