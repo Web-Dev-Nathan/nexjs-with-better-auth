@@ -11,7 +11,6 @@ import {
 import { User } from "@prisma/client";
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
-import ImpersonateUser from "./impersonate-user";
 
 export default function UsersTable() {
 	const [users, setUsers] = useState<User[]>([]);
@@ -90,7 +89,6 @@ export default function UsersTable() {
 							{new Date(user.createdAt).toLocaleDateString()}
 						</TableCell>
 						<TableCell>
-							<ImpersonateUser userId={user.id} />
 						</TableCell>
 					</TableRow>
 				))}
