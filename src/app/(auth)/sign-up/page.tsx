@@ -47,10 +47,11 @@ export default function SignUp() {
 					setPending(true);
 				},
 				onSuccess: () => {
-					toast("Account created",{
+					toast.success("Account created",{
 						 
 						description:
 							"Your account has been created. Check your email for a verification link.",
+							descriptionClassName:"text-red-500"
 					});
 				},
 				onError: (ctx) => {
@@ -58,7 +59,9 @@ export default function SignUp() {
 					toast("Something went wrong",{
 					
 						description: ctx.error.message ?? "Something went wrong.",
+						
 					});
+					console.log(ctx.error.message)
 				},
 			}
 		);

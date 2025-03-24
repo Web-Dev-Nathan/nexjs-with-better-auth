@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 
 import { openAPI } from "better-auth/plugins";
 import { admin } from "better-auth/plugins";
-import { email } from "./email";
+import { sendEmail } from "./nodemailer";
 
 
 export const auth = betterAuth({
@@ -31,7 +31,7 @@ export const auth = betterAuth({
     changeEmail: {
       enabled: true,
       sendChangeEmailVerification: async ({ newEmail, url }) => {
-        await email({
+        await sendEmail({
           to: newEmail,
           subject: 'Verify your email change',
           text: `Click the link to verify: ${url}`
@@ -52,7 +52,7 @@ export const auth = betterAuth({
     enabled: true,
     requireEmailVerification: true,
     sendResetPassword: async ({ user, url }) => {
-      await email({
+      await sendEmail({
         to: user.email,
         subject: "Reset your password",
         text: `Click the link to reset your password: ${url}`,
@@ -64,7 +64,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, token }) => {
       const verificationUrl = `${process.env.BETTER_AUTH_URL}/api/auth/verify-email?token=${token}&callbackURL=${process.env.EMAIL_VERIFICATION_CALLBACK_URL}`;
-      await email({
+      await sendEmail({
         to: user.email,
         subject: "Verify your email address",
         text: `Click the link to verify your email: ${verificationUrl}`,

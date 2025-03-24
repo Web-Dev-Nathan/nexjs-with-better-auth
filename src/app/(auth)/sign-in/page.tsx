@@ -56,9 +56,9 @@ export default function SignIn() {
 				},
 				onError: (ctx: ErrorContext) => {
 					console.log(ctx);
-					toast("Something went wrong",{
+					toast.error("Something went wrong",{
 						description: ctx.error.message ?? "Something went wrong.",
-
+						
 					});
 				},
 			}
